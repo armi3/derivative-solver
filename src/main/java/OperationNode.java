@@ -4,59 +4,53 @@ public class OperationNode extends Node {
     private Node parent;
     private Node right;
     private Node left;
-    private char operator;
+    private char content;
 
-    OperationNode(char operator){
+    OperationNode(char content){
         super();
         this.parent = null;
         this.right = null;
         this.left = null;
-        this.operator = operator;
-    }
-
-    public char getOperator() {
-        return operator;
-    }
-
-    public void setOperator(char operator) {
-        this.operator = operator;
+        this.content = content;
     }
 
     @Override
     public Node getParent() {
-        // TODO Auto-generated method stub
-        return super.getParent();
-    }
-
-    @Override
-    public Node getRight() {
-        // TODO Auto-generated method stub
-        return super.getRight();
-    }
-
-    @Override
-    public Node getLeft() {
-        // TODO Auto-generated method stub
-        return super.getLeft();
+        return parent;
     }
 
     @Override
     public void setParent(Node parent) {
-        // TODO Auto-generated method stub
-        super.setParent(parent);
+        this.parent = parent;
+    }
+
+    @Override
+    public Node getRight() {
+        return right;
     }
 
     @Override
     public void setRight(Node right) {
-        // TODO Auto-generated method stub
-        super.setRight(right);
+        this.right = right;
+    }
+
+    @Override
+    public Node getLeft() {
+        return left;
     }
 
     @Override
     public void setLeft(Node left) {
-        // TODO Auto-generated method stub
-        super.setLeft(left);
+        this.left = left;
     }
 
+    @Override
+    public char getContent() {
+        return content;
+    }
 
+    @Override
+    public void setContent(char content) {
+        this.content = content;
+    }
 }

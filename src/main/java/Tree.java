@@ -2,77 +2,39 @@
 
 public interface Tree {
 
-    static Node build(Node headInputPostfix, Container stack) {
-        String valueBeingCaptured = "";
-        boolean nextIsSigned = false;
+    static Node build(Node headInputPostfix, StackContainer stack) {
+        stack.clear();
+        Node currentNode = headInputPostfix;
+        Node nextNode = headInputPostfix.getRight();
 
-        for (int i = 0; i < postfix.length; i++) {
-
-            if (Parser.isValue(postfix[i])) {
-                valueBeingCaptured += postfix[i];
-                while (Parser.isValue(postfix[i+1])) {
-                    valueBeingCaptured += postfix[i+1];
-                    i++;
-                }
-                ValueNode node = new ValueNode(Double.parseDouble(valueBeingCaptured));
-                if (nextIsSigned) {
-                    node.setValue(node.getValue()*-1);
-                    nextIsSigned = false;
-                }
-                stack.in(node);
-                valueBeingCaptured = "";
+        while(currentNode!=nextNode){
+            if (Parser.isOperator(currentNode.getContent())){
+                currentNode.setRight(stack.out());
+                currentNode.setLeft(stack.out());
             }
-
-            else if(postfix[i]=='x') {
-                VariableNode node = new VariableNode(postfix[i]);
-                if (nextIsSigned) {
-                    node.setNegative(!node.isNegative());
-                    nextIsSigned = false;
-                }
-                stack.in(node);
-            }
-
-            else if(postfix[i]=='+') {
+            else if (Parser.isValue(currentNode.getContent())){
 
             }
-
-            else if(postfix[i]=='-') {
-
-            }
-
-            else if(postfix[i]=='*') {
-
-            }
-
-            else if(postfix[i]=='/') {
-
-            }
-
-            else if(postfix[i]=='^') {
-
-            }
-
-            else if(postfix[i]=='(') {
-
-            }
-
-            else if(postfix[i]==')') {
+            else {
 
             }
 
         }
 
-        Node root = stack.out();
-        return root;
+
+        //Node root = stack.out();
+        return stack.out();
     }
 
-    static Node buildDerivative(Node rootInput, Container stack) {
+    static Node buildDerivative(Node rootInput, StackContainer stack) {
+        stack.clear();
         return rootInput;
         //return rootOutput;
 
     }
 
-    static String unbuild(Node rootOutput, Container stack){
+    static String unbuild(Node rootOutput, StackContainer stack){
+        stack.clear();
         return null;
 
     }

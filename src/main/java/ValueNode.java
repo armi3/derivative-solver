@@ -5,6 +5,7 @@ public class ValueNode extends Node{
     private Node right;
     private Node left;
     private double value;
+    private char content;
 
     ValueNode(double value){
         super();
@@ -12,6 +13,37 @@ public class ValueNode extends Node{
         this.right = null;
         this.left = null;
         this.value = value;
+        this.content = content;
+    }
+
+    @Override
+    public Node getParent() {
+        return parent;
+    }
+
+    @Override
+    public void setParent(Node parent) {
+        this.parent = parent;
+    }
+
+    @Override
+    public Node getRight() {
+        return right;
+    }
+
+    @Override
+    public void setRight(Node right) {
+        this.right = right;
+    }
+
+    @Override
+    public Node getLeft() {
+        return left;
+    }
+
+    @Override
+    public void setLeft(Node left) {
+        this.left = left;
     }
 
     public double getValue() {
@@ -23,42 +55,12 @@ public class ValueNode extends Node{
     }
 
     @Override
-    public Node getParent() {
-        // TODO Auto-generated method stub
-        return super.getParent();
+    public char getContent() {
+        return content;
     }
 
     @Override
-    public Node getRight() {
-        // TODO Auto-generated method stub
-        return super.getRight();
+    public void setContent(char content) {
+        this.content = content;
     }
-
-    @Override
-    public Node getLeft() {
-        // TODO Auto-generated method stub
-        return super.getLeft();
-    }
-
-    @Override
-    public void setParent(Node parent) {
-        // TODO Auto-generated method stub
-        super.setParent(parent);
-    }
-
-    @Override
-    public void setRight(Node right) {
-        // TODO Auto-generated method stub
-        super.setRight(right);
-    }
-
-    @Override
-    public void setLeft(Node left) {
-        // TODO Auto-generated method stub
-        super.setLeft(left);
-    }
-
-
-
-
 }

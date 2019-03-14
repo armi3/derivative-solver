@@ -4,70 +4,63 @@ public class VariableNode extends Node{
     private Node parent;
     private Node right;
     private Node left;
-    private char variable;
+    private char content;
     private boolean negative;
 
-    VariableNode(char variable){
+    VariableNode(char content){
         super();
         this.parent = null;
         this.right = null;
         this.left = null;
-        this.variable = variable;
+        this.content = content;
         this.negative = false;
     }
 
-    public char getVariable() {
-        return variable;
+    @Override
+    public Node getParent() {
+        return parent;
+    }
+
+    @Override
+    public void setParent(Node parent) {
+        this.parent = parent;
+    }
+
+    @Override
+    public Node getRight() {
+        return right;
+    }
+
+    @Override
+    public void setRight(Node right) {
+        this.right = right;
+    }
+
+    @Override
+    public Node getLeft() {
+        return left;
+    }
+
+    @Override
+    public void setLeft(Node left) {
+        this.left = left;
+    }
+
+    @Override
+    public char getContent() {
+        return content;
+    }
+
+    @Override
+    public void setContent(char content) {
+        this.content = content;
     }
 
     public boolean isNegative() {
         return negative;
     }
 
-    public void setVariable(char variable) {
-        this.variable = variable;
-    }
-
     public void setNegative(boolean negative) {
         this.negative = negative;
     }
-
-    @Override
-    public Node getParent() {
-        // TODO Auto-generated method stub
-        return super.getParent();
-    }
-
-    @Override
-    public Node getRight() {
-        // TODO Auto-generated method stub
-        return super.getRight();
-    }
-
-    @Override
-    public Node getLeft() {
-        // TODO Auto-generated method stub
-        return super.getLeft();
-    }
-
-    @Override
-    public void setParent(Node parent) {
-        // TODO Auto-generated method stub
-        super.setParent(parent);
-    }
-
-    @Override
-    public void setRight(Node right) {
-        // TODO Auto-generated method stub
-        super.setRight(right);
-    }
-
-    @Override
-    public void setLeft(Node left) {
-        // TODO Auto-generated method stub
-        super.setLeft(left);
-    }
-
-
-
 }

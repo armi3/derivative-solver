@@ -17,15 +17,73 @@ public interface Parser {
         }
     }
 
-    static boolean isUnary(char[] postfix, int i) {
-        if((!isOperator(postfix[i-1]) && !isOperator(postfix[i+1]))
-                || (!isOperator(postfix[i-1]) && postfix[i+1]=='(')
-                || (postfix[i-1]==')' && !isOperator(postfix[i+1]))
-                || (postfix[i-1]==')' && postfix[i-1]=='(')) {
+    static boolean isUnary(char[] inputInfixArray, int i) {
+        if((!isOperator(inputInfixArray[i-1]) && !isOperator(inputInfixArray[i+1]))
+                || (!isOperator(inputInfixArray[i-1]) && inputInfixArray[i+1]=='(')
+                || (inputInfixArray[i-1]==')' && !isOperator(inputInfixArray[i+1]))
+                || (inputInfixArray[i-1]==')' && inputInfixArray[i-1]=='(')) {
             return false;
         } else {
             return true;
         }
+    }
+
+    static boolean isGreater(char charToEvaluate, char charStacked){
+        boolean result = false;
+        switch (charToEvaluate){
+            case '+':
+                switch (charStacked){
+                    case '+': result = false;break;
+                    case '-': result = false;break;
+                    case '*': result = false;break;
+                    case '/': result = false;break;
+                    case '^': result = false;break;
+                    default:
+                }
+                break;
+            case '-':
+                switch (charStacked){
+                    case '+': result = false;break;
+                    case '-': result = false;break;
+                    case '*': result = false;break;
+                    case '/': result = false;break;
+                    case '^': result = false;break;
+                    default:
+                }
+                break;
+            case '*':
+                switch (charStacked){
+                    case '+': result = true;break;
+                    case '-': result = true;break;
+                    case '*': result = false;break;
+                    case '/': result = false;break;
+                    case '^': result = false;break;
+                    default:
+                }
+                break;
+            case '/':
+                switch (charStacked){
+                    case '+': result = true;break;
+                    case '-': result = true;break;
+                    case '*': result = false;break;
+                    case '/': result = false;break;
+                    case '^': result = false;break;
+                    default:
+                }
+                break;
+            case '^':
+                switch (charStacked){
+                    case '+': result = true;break;
+                    case '-': result = true;break;
+                    case '*': result = true;break;
+                    case '/': result = true;break;
+                    case '^': result = false;break;
+                    default:
+                }
+                break;
+            default:
+        }
+        return result;
     }
 
 }

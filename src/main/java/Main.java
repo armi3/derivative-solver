@@ -3,7 +3,7 @@ public class Main {
 
     public static void main(String[] args) {
         String inputInfix = "-x^2*3(22-2.5x)^2/0.1^-2+(x+2x)";
-        Container stack = new StackContainer();
+        StackContainer stack = new StackContainer();
 
         Node headInputPostfix = LinkedList.build(inputInfix, stack);
         Node rootInput = Tree.build(headInputPostfix, stack);

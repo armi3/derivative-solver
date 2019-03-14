@@ -4,6 +4,7 @@ public abstract class Node {
     private Node parent;
     private Node right;
     private Node left;
+    private char content;
 
     public Node getParent() {
         return parent;
@@ -23,6 +24,10 @@ public abstract class Node {
     public void setLeft(Node left) {
         this.left = left;
     }
-
-
+    public char getContent() {
+        return content;
+    }
+    public void setContent(char content) {
+        this.content = content;
+    }
 }
