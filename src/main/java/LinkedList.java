@@ -14,7 +14,7 @@ public interface LinkedList {
             if (Parser.isValue(inputInfixArray[i])) {
                 valueBeingCaptured += inputInfixArray[i];
 
-                while (Parser.isValue(inputInfixArray[i + 1])) {
+                while ((i+1<inputInfixArray.length) && (Parser.isValue(inputInfixArray[i + 1]))) {
                     valueBeingCaptured += inputInfixArray[i + 1];
                     i++;
                 }
@@ -28,7 +28,8 @@ public interface LinkedList {
             }
 
             else if (inputInfixArray[i] == 'x') {
-                VariableNode node = new VariableNode(inputInfixArray[i]);
+                VariableNode node = new VariableNode();
+                node.setContent("x");
                 if (nextIsSigned) {
                     node.setNegative(!node.isNegative());
                     nextIsSigned = false;
@@ -42,26 +43,34 @@ public interface LinkedList {
                     nextIsSigned = true;
                 }
                 else {
-                    OperationNode node = new OperationNode(inputInfixArray[i]);
-                    while (stack.look().getContent() == '(') {
-                        stack.out();
-                    }
-                    if(Parser.isGreater(inputInfixArray[i], stack.look().getContent())){
+                    OperationNode node = new OperationNode();
+                    node.setContent(node.getContent()+inputInfixArray[i]);
+                    if(stack.getDynamicSize()>0){
+                        while (stack.look().getContent().equals("(")) {
+                            stack.out();
+                        }
+                        if(Parser.isGreater(inputInfixArray[i], stack.look().getContent().charAt(0))){
+                            stack.in(node);
+                        } else{
+                            addToLinkedList(headInputPostfix, stack.out());
+                            stack.in(node);
+                        }
+                    } else {
                         stack.in(node);
-                    } else{
-                        addToLinkedList(headInputPostfix, stack.out());
-                        stack.in(node);
                     }
+
+
                 }
             }
 
             else if(inputInfixArray[i]=='(') {
-                OperationNode node = new OperationNode(inputInfixArray[i]);
+                OperationNode node = new OperationNode();
+                node.setContent(node.getContent()+inputInfixArray[i]);
                 stack.in(node);
             }
 
             else if(inputInfixArray[i]==')') {
-                while (stack.look().getContent() == '(') {
+                while (stack.look().getContent().equals("(")) {
                     stack.out();
                 }
                 if (stack.getDynamicSize()!=0) {
@@ -105,6 +114,23 @@ public interface LinkedList {
             length++;
         }
         return length;
+    }
+
+    static void toString(Node head){
+        Node currentNode = head;
+        Node nextNode = head.getRight();
+        if(currentNode!=nextNode){
+            do{
+                System.out.print(currentNode.toString());
+                currentNode = nextNode;
+                nextNode = currentNode.getRight();
+            } while(currentNode!=nextNode);
+            System.out.print(currentNode.toString());
+        }
+        else {
+            System.out.print(currentNode.toString());
+        }
+
     }
 
 }

@@ -18,12 +18,16 @@ public interface Parser {
     }
 
     static boolean isUnary(char[] inputInfixArray, int i) {
-        if((!isOperator(inputInfixArray[i-1]) && !isOperator(inputInfixArray[i+1]))
+        if(i==0){
+            return true;
+        }
+        else if((!isOperator(inputInfixArray[i-1]) && !isOperator(inputInfixArray[i+1]))
                 || (!isOperator(inputInfixArray[i-1]) && inputInfixArray[i+1]=='(')
                 || (inputInfixArray[i-1]==')' && !isOperator(inputInfixArray[i+1]))
                 || (inputInfixArray[i-1]==')' && inputInfixArray[i-1]=='(')) {
             return false;
-        } else {
+        }
+        else {
             return true;
         }
     }

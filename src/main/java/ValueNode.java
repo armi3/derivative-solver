@@ -5,7 +5,7 @@ public class ValueNode extends Node{
     private Node right;
     private Node left;
     private double value;
-    private char content;
+    private String content;
 
     ValueNode(double value){
         super();
@@ -13,7 +13,7 @@ public class ValueNode extends Node{
         this.right = null;
         this.left = null;
         this.value = value;
-        this.content = content;
+        this.content = "";
     }
 
     @Override
@@ -55,12 +55,12 @@ public class ValueNode extends Node{
     }
 
     @Override
-    public char getContent() {
+    public String getContent() {
         return content;
     }
 
     @Override
-    public void setContent(char content) {
+    public void setContent(String content) {
         this.content = content;
     }
 }

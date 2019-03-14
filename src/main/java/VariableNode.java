@@ -4,15 +4,15 @@ public class VariableNode extends Node{
     private Node parent;
     private Node right;
     private Node left;
-    private char content;
+    private String content;
     private boolean negative;
 
-    VariableNode(char content){
+    VariableNode(){
         super();
         this.parent = null;
         this.right = null;
         this.left = null;
-        this.content = content;
+        this.content = "";
         this.negative = false;
     }
 
@@ -47,12 +47,12 @@ public class VariableNode extends Node{
     }
 
     @Override
-    public char getContent() {
+    public String getContent() {
         return content;
     }
 
     @Override
-    public void setContent(char content) {
+    public void setContent(String content) {
         this.content = content;
     }
 
